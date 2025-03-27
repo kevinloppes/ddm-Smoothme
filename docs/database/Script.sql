@@ -1,0 +1,21 @@
+CREATE TABLE Usuario (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE Diario (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  texto TEXT NOT NULL,
+  data DATE NOT NULL,
+  usuario_id INT,
+  FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
+
+CREATE TABLE Tarefa (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  titulo VARCHAR(50) NOT NULL,
+  concluida BOOLEAN DEFAULT FALSE,
+  usuario_id INT,
+  FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
